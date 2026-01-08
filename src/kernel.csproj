@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Simple Kernel</Description>
+    <Authors>Hamfer Team</Authors>
+    <Company>Hamfer</Company>
+    <Copyright>Copyright © Hamfer</Copyright>
+
+    <PackageId>HamferTeam.Kernel</PackageId>
+    <PackageTags>kernel,utils,common</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageProjectUrl>https://hamfer.team/</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>HamferTeam.Kernel</RootNamespace>    
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" Visible="false" PackagePath="/" />
+    <None Include="README.md" Pack="true" Visible="false" PackagePath="/" />
+  </ItemGroup>
+</Project>
