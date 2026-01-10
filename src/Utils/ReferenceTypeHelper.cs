@@ -18,4 +18,10 @@ public static class ReferenceTypeHelper
 
     return i != null;
   }
+
+  // TODO
+  // public static bool IsNullable(Type type)
+  // {
+    
+  // }
 }
