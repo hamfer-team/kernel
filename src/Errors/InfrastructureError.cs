@@ -1,9 +1,9 @@
-﻿namespace HamferTeam.Kernel.Models.Errors;
+﻿namespace HamferTeam.Kernel.Errors;
 
 public class InfrastructureError : KernelError
 {
   public const string occuredlayer = "Infrastructure Layer";
-  public InfrastructureError(string? message = null, Exception? innerException = null) : base(message, innerException)
+  public InfrastructureError(string? message = null, Exception? innerError = null) : base(message, innerError)
   {
   }
 }

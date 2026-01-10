@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using HamferTeam.Kernel.Models.Errors;
+using HamferTeam.Kernel.Errors;
 
 namespace HamferTeam.Kernel.Utils;
 

@@ -1,9 +1,9 @@
-﻿namespace HamferTeam.Kernel.Models.Errors;
+﻿namespace HamferTeam.Kernel.Errors;
 
 public class DomainError : KernelError
 {
   public const string occuredlayer = "Domain Layer";
-  public DomainError(string? message = null, Exception? innerException = null) : base(message, innerException)
+  public DomainError(string? message = null, Exception? innerError = null) : base(message, innerError)
   {
   }
 }
