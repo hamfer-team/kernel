@@ -1,10 +1,10 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace patronex.kernel.library.Shared.Extensions;
+namespace HamferTeam.Kernel.Utils;
 
 public static class StringExtensions
 {
-  public static string AppendWith(this string src, string newPart, string separator = ",")
+  public static string? AppendWith(this string? src, string newPart, string separator = ",")
   {
     if (string.IsNullOrEmpty(src))
     {
