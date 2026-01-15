@@ -1,7 +1,7 @@
 ﻿using System.Text;
-using HamferTeam.Kernel.Errors;
+using Hamfer.Kernel.Errors;
 
-namespace HamferTeam.Kernel.Utils;
+namespace Hamfer.Kernel.Utils;
 
 public static class ExceptionExtensions
 {

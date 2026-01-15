@@ -1,7 +1,7 @@
 using System.Reflection;
-using HamferTeam.Kernel.Utils;
+using Hamfer.Kernel.Utils;
 
-namespace HamferTeam.Kernel.Services;
+namespace Hamfer.Kernel.Services;
 
 /// <summary>
 /// The Env file loader and deserializer

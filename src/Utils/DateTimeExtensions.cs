@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace HamferTeam.Kernel.Utils;
+namespace Hamfer.Kernel.Utils;
 
 public static class DateTimeExtensions
 {

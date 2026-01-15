@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace HamferTeam.Kernel.Utils;
+namespace Hamfer.Kernel.Utils;
 
 public static class ClassExtensions
 {

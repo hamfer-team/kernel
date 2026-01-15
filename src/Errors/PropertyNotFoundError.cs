@@ -1,6 +1,6 @@
-﻿using HamferTeam.Kernel.Errors;
+﻿using Hamfer.Kernel.Errors;
 
-namespace HamferTeam.Kernel.Models.Errors;
+namespace Hamfer.Kernel.Models.Errors;
 
 public class PropertyNotFoundError<TObject> : KernelError
 {

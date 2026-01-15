@@ -1,4 +1,4 @@
-﻿namespace HamferTeam.Kernel.Errors;
+﻿namespace Hamfer.Kernel.Errors;
 
 public class ApiError : KernelError
 {

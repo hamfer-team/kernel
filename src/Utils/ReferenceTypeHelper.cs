@@ -1,6 +1,6 @@
-﻿using HamferTeam.Kernel.Models.Errors;
+﻿using Hamfer.Kernel.Models.Errors;
 
-namespace HamferTeam.Kernel.Utils;
+namespace Hamfer.Kernel.Utils;
 
 public static class ReferenceTypeHelper
 {

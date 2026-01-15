@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace HamferTeam.Kernel.Utils;
+namespace Hamfer.Kernel.Utils;
 
 public static class StringExtensions
 {
