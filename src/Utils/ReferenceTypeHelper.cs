@@ -1,4 +1,4 @@
-﻿using Hamfer.Kernel.Models.Errors;
+﻿using Hamfer.Kernel.Errors;
 
 namespace Hamfer.Kernel.Utils;
 

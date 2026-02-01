@@ -25,7 +25,7 @@ public static class ExceptionExtensions
     var aggException = exception as AggregateException;
     if (aggException == null && ReferenceTypeHelper.IsDerivedOfGenericInterface(exception.GetType(), typeof(IAggregatedError<>)))
     {
-      var prop = exception.GetType().GetProperty(nameof(IAggregatedError<>.InnerErrors));
+      var prop = exception.GetType().GetProperty(nameof(IAggregatedError<>.innerErrors));
       var value = (Exception[]?)prop?.GetValue(exception, null);
       if (value != null)
       {
