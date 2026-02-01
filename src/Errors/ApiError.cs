@@ -2,7 +2,7 @@
 
 public class ApiError : KernelError
 {
-  public const string occuredlayer = "API Layer";
+  public const string OCCURED_LAYER = "API Layer";
   public ApiError(string? message = null, Exception? innerError = null) : base(message, innerError)
   {
   }

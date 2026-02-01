@@ -3,5 +3,5 @@
 public interface IAggregatedError<TException> 
   where TException: Exception
 {
-  TException[] InnerErrors { get; }
+  TException[] innerErrors { get; }
 }
