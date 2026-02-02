@@ -23,6 +23,7 @@ public class EnvLoader
   string? file;
   string? rawContent;
   readonly List<(string key, string value)> keyValueContent;
+  bool isExtracted;
 
   /// <summary>
   /// Create a new `.env` file loader
@@ -30,6 +31,7 @@ public class EnvLoader
   public EnvLoader()
   {
     keyValueContent = [];
+    isExtracted = false;
   }
 
   /// <summary>
@@ -82,7 +84,7 @@ public class EnvLoader
     {
       throw new Exception("Unable to extract info from null content, please check that you already call `load` function.");
     }
-
+    
     string currentKey = string.Empty;
     string currentValue = string.Empty;
     bool isComment = false;
@@ -139,6 +141,7 @@ public class EnvLoader
       }
     }
 
+    this.isExtracted = true;
     return this;
   }
 
@@ -151,7 +154,7 @@ public class EnvLoader
   /// <exception cref="NotImplementedException">For some types we need implementations</exception>
   public T mapTo<T>(T returnObject)
   {
-    if (this.keyValueContent == null)
+    if (!this.isExtracted)
     {
       this.extract();
     }
