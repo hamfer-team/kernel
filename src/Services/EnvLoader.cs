@@ -89,6 +89,22 @@ public class EnvLoader
     string currentValue = string.Empty;
     bool isComment = false;
     bool isValue = false;
+    bool doubleQutationDetected = false;
+    
+    void appendChar(char c)
+    {
+      if (isComment == false)
+      {
+        if (isValue)
+        {
+          currentValue += c;
+        } else
+        {
+          currentKey += c;
+        }
+      }
+    }
+
     for (int i = 0; i <= this.rawContent.Length; i++)
     {
       char c = i == this.rawContent.Length ? ENV_FILE_NEW_LINE_CHAR : this.rawContent[i];
@@ -114,28 +130,40 @@ public class EnvLoader
             isValue = false;
             break;
           }
+        case ENV_FILE_DOUBLE_QUTATION_CHAR: // "
+          {
+            if(!isComment && isValue) {
+              doubleQutationDetected = !doubleQutationDetected;
+            }
+            break;
+          }
         case ENV_FILE_COMMENT_CHAR: // Comment
           {
-            isComment = true;
+            if (doubleQutationDetected)
+            {
+              appendChar(c);
+            }
+            else
+            {
+              isComment = true;
+            }
             break;
           }
         case ENV_FILE_EQUAL_CHAR: // Equal means *End of key*
           {
-            isValue = true;
+            if (doubleQutationDetected)
+            {
+              appendChar(c);
+            }
+            else 
+            {
+              isValue = true;
+            }
             break;
           }
         default:
           {
-            if (isComment == false)
-            {
-              if (isValue)
-              {
-                currentValue+= c;
-              } else
-              {
-                currentKey += c;
-              }
-            }
+            appendChar(c);
             break;
           }
       }
