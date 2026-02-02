@@ -8,15 +8,21 @@ namespace Hamfer.Kernel.Services;
 /// </summary>
 public class EnvLoader
 {
-  const char ENV_FILE_NEW_LINE_CHAR = '\n';
-  const char ENV_FILE_QUTATION_CHAR = '\'';
-  const char ENV_FILE_DOUBLE_QUTATION_CHAR = '"';
-  const char ENV_FILE_COMMENT_CHAR = '#';
-  const char ENV_FILE_EQUAL_CHAR = '=';
+  private const char ENV_FILE_NEW_LINE_CHAR = '\n';
+  private const char ENV_FILE_QUTATION_CHAR = '\'';
+  private const char ENV_FILE_DOUBLE_QUTATION_CHAR = '"';
+  private const char ENV_FILE_COMMENT_CHAR = '#';
+  private const char ENV_FILE_EQUAL_CHAR = '=';
+
+  public const string ENVIRONMENT = nameof(EnvModelBase.ENVIRONMENT);
+  public const string IS_DEV_KEY = nameof(EnvModelBase.IS_DEV);
+  public const string IS_PROD_KEY = nameof(EnvModelBase.IS_PROD);
+  public const string IS_TEST_KEY = nameof(EnvModelBase.IS_TEST);
+  public const string IS_DEMO_KEY = nameof(EnvModelBase.IS_DEMO);
 
   string? file;
   string? rawContent;
-  List<(string key, string value)> keyValueContent;
+  readonly List<(string key, string value)> keyValueContent;
 
   /// <summary>
   /// Create a new `.env` file loader
@@ -37,6 +43,18 @@ public class EnvLoader
     if (File.Exists(fileName))
     {
       this.file = fileName;
+      string envExt = Path.GetExtension(fileName).ToLowerInvariant().TrimStart(".").ToString();
+      if (Enum.TryParse(envExt, true, out EnvironmentEnum envEnum))
+      {
+        keyValueContent.Add((ENVIRONMENT, envExt));
+        keyValueContent.Add((IS_DEV_KEY, envEnum == EnvironmentEnum.Dev || envEnum == EnvironmentEnum.Development ? "true" : "false"));
+        keyValueContent.Add((IS_PROD_KEY, envEnum == EnvironmentEnum.Prod || envEnum == EnvironmentEnum.Production ? "true" : "false"));
+        keyValueContent.Add((IS_TEST_KEY, envEnum == EnvironmentEnum.Test ? "true" : "false"));
+        keyValueContent.Add((IS_DEMO_KEY, envEnum == EnvironmentEnum.Demo ? "true" : "false"));
+      } else
+      {
+        keyValueContent.Add((ENVIRONMENT, EnvModelBase.ENVIRONMENT_NOTFOUND));
+      }
     } else {
       this.file = Path.Join(IOHelper.Cwd(), fileName);
       if (File.Exists(this.file) == false)
