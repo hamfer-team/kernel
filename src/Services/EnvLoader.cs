@@ -177,10 +177,9 @@ public class EnvLoader
   /// Map `keyValueContent` to a custom object
   /// </summary>
   /// <typeparam name="T">Type of custom object</typeparam>
-  /// <param name="returnObject">The custom Object to return result based on it</param>
-  /// <returns>Updated `returnObject` with matched to `keyValueContent`</returns>
+  /// <returns>A `returnObject` with matched to `keyValueContent`</returns>
   /// <exception cref="NotImplementedException">For some types we need implementations</exception>
-  public T mapTo<T>(T returnObject)
+  public T mapTo<T>() where T: EnvModelBase, new()
   {
     if (!this.isExtracted)
     {
@@ -207,21 +206,20 @@ public class EnvLoader
       return null;
     }
 
-    if (returnObject != null) {
-      FieldInfo[] fields = typeof(T).GetFields();
-      PropertyInfo[] props = typeof(T).GetProperties();
+    T returnObject = new() { ENVIRONMENT = "" };
+    FieldInfo[] fields = typeof(T).GetFields();
+    PropertyInfo[] props = typeof(T).GetProperties();
 
-      foreach (FieldInfo fi in fields)
-      {
-        fi.SetValue(returnObject, prepareValue(fi.Name, fi.FieldType));
-      }
+    foreach (FieldInfo fi in fields)
+    {
+      fi.SetValue(returnObject, prepareValue(fi.Name, fi.FieldType));
+    }
 
-      foreach (PropertyInfo pi in props)
+    foreach (PropertyInfo pi in props)
+    {
+      if (pi.CanWrite)
       {
-        if (pi.CanWrite)
-        {
-          pi.SetValue(returnObject, prepareValue(pi.Name, pi.PropertyType));
-        }
+        pi.SetValue(returnObject, prepareValue(pi.Name, pi.PropertyType));
       }
     }
 

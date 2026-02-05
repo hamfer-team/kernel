@@ -9,4 +9,9 @@ public abstract class EnvModelBase
   public bool? IS_PROD { get; set; }
   public bool? IS_TEST { get; set; }
   public bool? IS_DEMO { get; set; }
+
+  public EnvModelBase()
+  {
+    this.ENVIRONMENT = ENVIRONMENT_NOTFOUND;
+  }
 }
