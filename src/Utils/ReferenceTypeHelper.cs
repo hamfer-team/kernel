@@ -14,9 +14,7 @@ public static class ReferenceTypeHelper
 
   public static bool IsDerivedOfGenericInterface(Type type, Type genericType)
   {
-    var i = type.GetInterface(genericType.Name);
-
-    return i != null;
+    return type.GetInterface(genericType.Name) != null;
   }
 
   // TODO
