@@ -1,4 +1,4 @@
-namespace Hamfer.Kernel.Services;
+namespace Hamfer.Kernel.EnvFileLoader;
 
 public abstract class EnvModelBase
 {
