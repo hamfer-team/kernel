@@ -4,7 +4,7 @@ public abstract class RootBase : EntityBase, IAmRoot
 {
   private string _boundary;
 
-  string IAmRoot.boundary
+  public string boundary
   {
     get => this._boundary;
     set => this._boundary = value;

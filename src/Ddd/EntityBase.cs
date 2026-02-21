@@ -10,7 +10,7 @@ public abstract class EntityBase : IAmEntity
   /// <summary>
   /// The unique auto-generated identifier for declaring the entity
   /// </summary>
-  Guid IAmEntity.id { 
+  public Guid id { 
     get => this._id; 
     set => this._id = value; 
   }
