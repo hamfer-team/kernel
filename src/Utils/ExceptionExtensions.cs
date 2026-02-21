@@ -1,7 +1,7 @@
 ﻿using System.Text;
-using HamferTeam.Kernel.Models.Errors;
+using Hamfer.Kernel.Errors;
 
-namespace HamferTeam.Kernel.Utils;
+namespace Hamfer.Kernel.Utils;
 
 public static class ExceptionExtensions
 {
@@ -25,7 +25,7 @@ public static class ExceptionExtensions
     var aggException = exception as AggregateException;
     if (aggException == null && ReferenceTypeHelper.IsDerivedOfGenericInterface(exception.GetType(), typeof(IAggregatedError<>)))
     {
-      var prop = exception.GetType().GetProperty(nameof(IAggregatedError<>.InnerExceptions));
+      var prop = exception.GetType().GetProperty(nameof(IAggregatedError<>.innerErrors));
       var value = (Exception[]?)prop?.GetValue(exception, null);
       if (value != null)
       {

@@ -1,4 +1,4 @@
-﻿namespace HamferTeam.Kernel.Models.Errors;
+﻿namespace Hamfer.Kernel.Errors;
 
 public class KernelError : Exception
 {
@@ -10,15 +10,15 @@ public class KernelError : Exception
   {
   }
 
-  public KernelError(string? message, Exception? innerException) : base(message, innerException)
+  public KernelError(string? message, Exception? innerError) : base(message, innerError)
   {
   }
 
-  public static KernelError Create(string? message = null, Exception? innerException = null)
+  public static KernelError Create(string? message = null, Exception? innerError = null)
   {
-    if (innerException != null)
+    if (innerError != null)
     {
-      return new KernelError(message ?? "A kernel exception occured!", innerException);
+      return new KernelError(message ?? "A kernel error occured!", innerError);
     }
       
     if (message != null)

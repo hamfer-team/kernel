@@ -1,7 +1,7 @@
-﻿namespace HamferTeam.Kernel.Models.Errors;
+﻿namespace Hamfer.Kernel.Errors;
 
 public interface IAggregatedError<TException> 
   where TException: Exception
 {
-  TException[] InnerExceptions { get; }
+  TException[] innerErrors { get; }
 }

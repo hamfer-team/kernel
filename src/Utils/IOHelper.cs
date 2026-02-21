@@ -1,9 +1,14 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 
-namespace HamferTeam.Kernel.Utils;
+namespace Hamfer.Kernel.Utils;
 
 public static class IOHelper
 {
+  public static string? Cwd() => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+  public static string? CurrentWorkingDirectory() => Cwd();
+
   private static readonly byte[] TestFileBytes = Encoding.ASCII.GetBytes(@"X");
 
   public static bool IsFileNameValid(string file, bool removePath = true)

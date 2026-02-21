@@ -1,6 +1,7 @@
-﻿using HamferTeam.Kernel.Models.Errors;
+﻿using System.ComponentModel;
+using Hamfer.Kernel.Errors;
 
-namespace HamferTeam.Kernel.Utils;
+namespace Hamfer.Kernel.Utils;
 
 public static class TypeHelper
 {
@@ -35,5 +36,26 @@ public static class TypeHelper
 
     // Fail with exception
     throw new KernelError($"{nameof(GetDefault)} Error:\n\nThe supplied value type <{type}> is not a publicly-visible type, so the default value cannot be retrieved");
+  }
+
+  public static T? ChangeTypeTo<T>(dynamic? value)
+  {
+    return ChangeTypeTo(typeof(T), value);
+  }
+
+  public static dynamic? ChangeTypeTo(Type type, dynamic? value)
+  {
+    Type? underlyingType = Nullable.GetUnderlyingType(type);
+    if (underlyingType != null && value == null)
+    {
+        return null;
+    }
+
+    Type basetype = underlyingType ?? type;
+    
+    return Convert.ChangeType(value, basetype);
+
+    // TypeConverter tc = TypeDescriptor.GetConverter(type);
+    // return tc.ConvertFrom(value);
   }
 }

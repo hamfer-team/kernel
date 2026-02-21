@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Globalization;
 
-namespace HamferTeam.Kernel.Utils;
+namespace Hamfer.Kernel.Utils;
 
 public static class ValueTypeHelper
 {
@@ -23,11 +23,17 @@ public static class ValueTypeHelper
   public static bool IsNumeric(Type? type)
   => type != null && NumericTypes.Contains(type);
 
-  public static bool TryParse<T>(string fromString, out T? toValue)
+  public static bool TryParse<T>(string? fromString, out T? toValue)
   {
     toValue = default;
+
     try
     {
+      if (fromString == null)
+      {
+        // TODO check if `T` is nullable.
+        return false;
+      }
       TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
       toValue = (T?)converter.ConvertFromString(null, CultureInfo.InvariantCulture, fromString);
 

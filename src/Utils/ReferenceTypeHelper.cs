@@ -1,6 +1,6 @@
-﻿using HamferTeam.Kernel.Models.Errors;
+﻿using Hamfer.Kernel.Errors;
 
-namespace HamferTeam.Kernel.Utils;
+namespace Hamfer.Kernel.Utils;
 
 public static class ReferenceTypeHelper
 {
@@ -14,8 +14,12 @@ public static class ReferenceTypeHelper
 
   public static bool IsDerivedOfGenericInterface(Type type, Type genericType)
   {
-    var i = type.GetInterface(genericType.Name);
-
-    return i != null;
+    return type.GetInterface(genericType.Name) != null;
   }
+
+  // TODO
+  // public static bool IsNullable(Type type)
+  // {
+    
+  // }
 }

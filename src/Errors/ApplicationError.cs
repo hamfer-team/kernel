@@ -1,9 +1,9 @@
-﻿namespace HamferTeam.Kernel.Models.Errors;
+﻿namespace Hamfer.Kernel.Errors;
 
 public class ApplicationError : KernelError
 {
-  public const string occuredlayer = "Application Layer";
-  public ApplicationError(string? message = null, Exception? innerException = null) : base(message, innerException)
+  public const string OCCURED_LAYER = "Application Layer";
+  public ApplicationError(string? message = null, Exception? innerError = null) : base(message, innerError)
   {
   }
 }
